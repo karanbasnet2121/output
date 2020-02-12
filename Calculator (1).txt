@@ -1,0 +1,180 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class CalculatorDemo extends JFrame implements ActionListener{
+   JPanel p=new JPanel(new GridLayout(5,4));
+    JTextField t=new JTextField();
+     JButton b0=new JButton("√");
+     JButton b1=new JButton("^");
+     JButton b2=new JButton("/");
+     JButton b3=new JButton("-");
+     JButton b4=new JButton("7");
+     JButton b5=new JButton("8");
+     JButton b6=new JButton("9");
+     JButton b7=new JButton("*");
+     JButton b8=new JButton("4");
+     JButton b9=new JButton("5");
+     JButton b10=new JButton("6");
+     JButton b11=new JButton("+");
+     JButton b12=new JButton("1");
+     JButton b13=new JButton("2");
+     JButton b14=new JButton("3");
+     JButton b15=new JButton("=");
+     JButton b16=new JButton("0");
+     JButton b17=new JButton(".");
+     JButton b18=new JButton("DEL");
+    static double a=0,b=0,result=0;
+    static int operator=0;
+    CalculatorDemo(){
+    t.setBounds(10,10,400,20);
+    add(t);
+       p.add(b0);
+       p.add(b1);
+       p.add(b2);
+       p.add(b3);
+       p.add(b4);
+        p.add(b5);
+        p.add(b6);
+        p.add(b7);
+        p.add(b8);
+        p.add(b9);
+        p.add(b10);
+        p.add(b11);
+        p.add(b12);
+        p.add(b13);
+        p.add(b14);
+        p.add(b15);
+        p.add(b16);
+        p.add(b17);
+        p.add(b18);
+        b0.addActionListener(this); 
+        b1.addActionListener(this); 
+        b2.addActionListener(this); 
+        b3.addActionListener(this); 
+        b4.addActionListener(this); 
+        b5.addActionListener(this); 
+        b6.addActionListener(this); 
+        b7.addActionListener(this); 
+        b8.addActionListener(this); 
+        b9.addActionListener(this); 
+        b10.addActionListener(this); 
+        b11.addActionListener(this); 
+        b12.addActionListener(this); 
+        b13.addActionListener(this); 
+        b14.addActionListener(this); 
+        b15.addActionListener(this); 
+        b16.addActionListener(this); 
+        b17.addActionListener(this); 
+        b18.addActionListener(this); 
+    p.setBackground(Color.ORANGE);
+    p.setBounds(10,30,400,500);
+    add(p);
+    setTitle(" GUI Calculator");
+    setSize(450,600);
+    setLayout(null);
+    setVisible(true);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource()==b12)
+			t.setText(t.getText().concat("1"));
+		
+		if(e.getSource()==b13)
+			t.setText(t.getText().concat("2"));
+		
+		if(e.getSource()==b14)
+			t.setText(t.getText().concat("3"));
+		
+		if(e.getSource()==b8)
+			t.setText(t.getText().concat("4"));
+		
+		if(e.getSource()==b9)
+			t.setText(t.getText().concat("5"));
+		
+		if(e.getSource()==b10)
+			t.setText(t.getText().concat("6"));
+		
+		if(e.getSource()==b4)
+			t.setText(t.getText().concat("7"));
+		
+		if(e.getSource()==b5)
+			t.setText(t.getText().concat("8"));
+		
+		if(e.getSource()==b6)
+			t.setText(t.getText().concat("9"));
+		
+		if(e.getSource()==b16)
+			t.setText(t.getText().concat("0"));
+		
+		if(e.getSource()==b17)
+			t.setText(t.getText().concat("."));
+		
+		if(e.getSource()==b11)
+		{
+			a=Double.parseDouble(t.getText());
+			operator=1;
+			t.setText("");
+		} 
+		
+		if(e.getSource()==b3)
+		{
+			a=Double.parseDouble(t.getText());
+			operator=2;
+			t.setText("");
+		}
+		
+		if(e.getSource()==b7)
+		{
+			a=Double.parseDouble(t.getText());
+			operator=3;
+			t.setText("");
+		}
+		
+		if(e.getSource()==b2)
+		{
+			a=Double.parseDouble(t.getText());
+			operator=4;
+			t.setText("");
+		}
+		
+		if(e.getSource()==b15)
+		{
+			b=Double.parseDouble(t.getText());
+		
+			switch(operator)
+			{
+				case 1: result=a+b;
+					break;
+		
+				case 2: result=a-b;
+					break;
+		
+				case 3: result=a*b;
+					break;
+		
+				case 4: result=a/b;
+					break;
+		
+				default: result=0;
+			}
+		
+			t.setText(""+result);
+		}
+		
+		if(e.getSource()==b18)
+		{
+			String s=t.getText();
+			t.setText("");
+			for(int i=0;i<s.length()-1;i++)
+			t.setText(t.getText()+s.charAt(i));
+		}		
+	
+}
+
+    public static void main(String[]args){
+        new CalculatorDemo();
+    }
+}
+
